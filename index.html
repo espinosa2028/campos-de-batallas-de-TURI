@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ajedrez Tortuga 3D</title>
+  <link rel="stylesheet" href="style.css">
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/",
+        "chess.js": "https://cdn.jsdelivr.net/npm/chess.js@1.4.0/dist/esm/chess.js"
+      }
+    }
+  </script>
+</head>
+<body>
+  <main class="app">
+    <header>
+      <div class="logo">🐢</div>
+      <div>
+        <small>AVENTURA ESTRATÉGICA 3D</small>
+        <h1>AJEDREZ <span>TORTUGA</span></h1>
+      </div>
+    </header>
+
+    <section class="toolbar">
+      <div class="modes">
+        <button class="mode active" data-mode="local">Dos jugadores</button>
+        <button class="mode" data-mode="cpu">Contra la CPU</button>
+      </div>
+
+      <label id="difficultyWrap" hidden>
+        Dificultad
+        <select id="difficulty">
+          <option value="1">Fácil</option>
+          <option value="2" selected>Normal</option>
+          <option value="3">Difícil</option>
+        </select>
+      </label>
+
+      <button id="newGame">Nueva partida</button>
+      <button id="undo">Deshacer</button>
+    </section>
+
+    <div class="game-layout">
+      <section class="board-area">
+        <div class="player-label top">🌊 Equipo marino · Azul</div>
+
+        <div id="scene-container">
+          <div id="loading">Cargando tablero 3D…</div>
+        </div>
+
+        <div class="player-label bottom">🌿 Equipo terrestre · Verde</div>
+
+        <div class="camera">
+          <button id="topView">Vista superior</button>
+          <button id="resetCamera">Centrar cámara</button>
+          <span>Arrastra para girar · rueda para acercar/alejar</span>
+        </div>
+      </section>
+
+      <aside>
+        <section class="panel">
+          <h2>Estado de la partida</h2>
+          <p id="status">Turno: terrestres (verdes)</p>
+          <p class="tip">
+            Selecciona una tortuga para ver sus movimientos legales.
+            Las casillas doradas son destinos posibles.
+          </p>
+        </section>
+
+        <section class="panel">
+          <h2>Movimientos</h2>
+          <div id="history">Todavía no hay movimientos.</div>
+        </section>
+
+        <section class="panel">
+          <h2>Distribución del tablero</h2>
+          <p>🟫 A–B: tierra y césped</p>
+          <p>🏖️ C–F: arena y cangrejitos</p>
+          <p>🌊 G–H: agua, estrellas y olas</p>
+          <p class="tip">
+            Coordenadas tradicionales: letras A–H y números 1–8.
+          </p>
+        </section>
+      </aside>
+    </div>
+  </main>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>

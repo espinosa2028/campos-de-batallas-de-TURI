@@ -1,0 +1,258 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700;800&family=Outfit:wght@600;700;800&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #f2f2e9;
+  color: #173b36;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.app {
+  max-width: 1450px;
+  margin: auto;
+  padding: 22px;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-bottom: 22px;
+}
+
+.logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 15px;
+  background: #dcebd9;
+  display: grid;
+  place-items: center;
+  font-size: 27px;
+}
+
+header small {
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: #789087;
+  font-weight: 800;
+}
+
+h1 {
+  font: 800 23px Outfit;
+  margin: 2px 0;
+}
+
+h1 span {
+  color: #4b916c;
+}
+
+.toolbar {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+button,
+select {
+  font: 700 12px 'DM Sans';
+  border: 1px solid #dce4d9;
+  border-radius: 9px;
+  padding: 10px 13px;
+  background: #fffefa;
+  color: #426457;
+  cursor: pointer;
+}
+
+button:hover {
+  filter: brightness(.97);
+}
+
+button.active,
+#newGame {
+  background: #285d49;
+  color: white;
+  border-color: #285d49;
+}
+
+#difficultyWrap {
+  font-size: 11px;
+  font-weight: 700;
+  color: #71877e;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.game-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 18px;
+  align-items: start;
+}
+
+.board-area {
+  min-width: 0;
+}
+
+#scene-container {
+  height: min(68vw, 680px);
+  min-height: 430px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  background: #b9d7cf;
+  box-shadow: 0 15px 45px #193c3020;
+}
+
+#scene-container canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+}
+
+#loading {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: #d8e8d7;
+  color: #315d45;
+  font-weight: 700;
+  z-index: 3;
+}
+
+#loading.hide {
+  display: none;
+}
+
+.player-label {
+  position: relative;
+  z-index: 1;
+  width: max-content;
+  max-width: 100%;
+  background: #fffefa;
+  padding: 8px 12px;
+  border-radius: 9px;
+  font-size: 11px;
+  font-weight: 700;
+  box-shadow: 0 3px 12px #173b3618;
+}
+
+.player-label.top {
+  margin: 0 0 -40px 12px;
+  top: 12px;
+}
+
+.player-label.bottom {
+  margin: -44px 12px 0 auto;
+}
+
+.camera {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.camera span {
+  font-size: 10px;
+  color: #80958b;
+}
+
+aside {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.panel {
+  background: #fffefa;
+  border: 1px solid #e5e8dc;
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 6px 20px #193c300c;
+}
+
+.panel h2 {
+  font: 700 14px Outfit;
+  margin: 0 0 12px;
+}
+
+#status {
+  padding: 11px;
+  background: #edf4e9;
+  border-radius: 9px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #456b50;
+}
+
+.panel p {
+  font-size: 11px;
+  line-height: 1.55;
+}
+
+.tip {
+  color: #84948a;
+}
+
+#history {
+  font-size: 11px;
+  line-height: 1.9;
+  max-height: 230px;
+  overflow: auto;
+  color: #456b50;
+  overflow-wrap: anywhere;
+}
+
+@media(max-width: 850px) {
+  .game-layout {
+    grid-template-columns: 1fr;
+  }
+
+  #scene-container {
+    height: 100vw;
+    min-height: 350px;
+    max-height: 620px;
+  }
+
+  aside {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .panel:first-child {
+    grid-column: span 2;
+  }
+}
+
+@media(max-width: 500px) {
+  .app {
+    padding: 12px;
+  }
+
+  .toolbar {
+    gap: 6px;
+  }
+
+  .toolbar button {
+    padding: 9px;
+    font-size: 10px;
+  }
+
+  aside {
+    grid-template-columns: 1fr;
+  }
+
+  .panel:first-child {
+    grid-column: auto;
+  }
+}
